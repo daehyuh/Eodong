@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <form action="/api/join" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <div>
+                <label for="MEMBER_MAJOR">MEMBER_MAJOR</label>
+                <select id="MEMBER_MAJOR" name="MEMBER_MAJOR">
+                    <option value="">학과를 선택하세요</option>
+                </select>
+
+                <script>
+                    fetch('http://localhost/api/membermajors')
+                        .then(response => response.json())
+                        .then(data => {
+                            const select = document.getElementById('MEMBER_MAJOR');
+
+                            data.forEach(item => {
+                                const option = document.createElement('option');
+                                option.value = item.member_major;
+                                option.textContent = item.member_major;
+                                select.appendChild(option);
+                            });
+                        })
+                        .catch(error => console.error(error));
+                </script>
+<!--                <label for="MEMBER_MAJOR">MEMBER_MAJOR</label>-->
+<!--                <input type="text" id="MEMBER_MAJOR" name="MEMBER_MAJOR" placeholder="이름을입력하세요">-->
+            </div>
+            <div>
+                <label for="MEMBER_ID">MEMBER_ID</label>
+                <input type="text" id="MEMBER_ID" name="MEMBER_ID" placeholder="아이디를 입력하세요">
+                <div>
+                    <label for="MEMBER_PW">MEMBER_PW</label>
+                    <input type="text" id="MEMBER_PW" name="MEMBER_PW" placeholder="비밀번호를 입력하세요">
+                </div>
+                <div>
+                    <label for="MEMBER_NAME">MEMBER_NAME</label>
+                    <input type="text" id="MEMBER_NAME" name="MEMBER_NAME" placeholder="이름을 입력하세요">
+                </div>
+                <div>
+                    <label for="MEMBER_UNI_ID">MEMBER_UNI_ID</label>
+                    <input type="text" id="MEMBER_UNI_ID" name="MEMBER_UNI_ID" placeholder="학번을 입력하세요">
+                </div>
+                <div>
+                    <label for="MEMBER_PHONE">MEMBER_PHONE</label>
+                    <input type="text" id="MEMBER_PHONE" name="MEMBER_PHONE" placeholder="번호를 입력하세요">
+                </div>
+                <div>
+                    <label for="MEMBER_EMAIL">MEMBER_EMAIL</label>
+                    <input type="text" id="MEMBER_EMAIL" name="MEMBER_EMAIL" placeholder="이메일을 입력하세요">
+                </div>
+            </div>
+            <button type="submit">등록</button>
+    </form>
+</div> <!-- /container -->
+</body>
+</html>
