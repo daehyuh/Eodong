@@ -1,6 +1,12 @@
 package com.example.eodong.controller;
 
 public class MemberForm {
+    public String MEMBER_ID;
+    public String MEMBER_PW;
+    public String MEMBER_NAME;
+    public int MEMBER_UNI_ID;
+    public int MEMBER_PHONE;
+    public String MEMBER_EMAIL;
     public String MEMBER_MAJOR;
 
     public String getMEMBER_MAJOR() {
@@ -59,10 +65,4 @@ public class MemberForm {
         this.MEMBER_EMAIL = MEMBER_EMAIL;
     }
 
-    public String MEMBER_ID;
-    public String MEMBER_PW;
-    public String MEMBER_NAME;
-    public int MEMBER_UNI_ID;
-    public int MEMBER_PHONE;
-    public String MEMBER_EMAIL;
 }

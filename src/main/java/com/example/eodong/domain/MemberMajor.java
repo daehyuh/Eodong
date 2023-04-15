@@ -1,7 +1,7 @@
 package com.example.eodong.domain;
 
 import javax.persistence.*;
-@Table(name = "MEMBER_MAJOR")
+@Table(name = "MEMBERMAJOR")
 @Entity
 public class MemberMajor {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)

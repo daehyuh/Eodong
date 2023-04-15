@@ -12,6 +12,8 @@ CREATE TABLE MEMBER
 );
 commit;
 
+drop table member;
+
 INSERT INTO MEMBER
 VALUES (MEMBER_SEQ.nextval, '컴퓨터공학부', '1', '1', '1', 1, 1, '1', SYSDATE);
 
@@ -31,7 +33,7 @@ commit;
 SELECT *
 FROM MEMBERMAJOR;
 
-DELETE * FROM MEMBER_MAJOR;
+DELETE * FROM MEMBERMAJOR;
 
 CREATE TABLE CLUB
 (

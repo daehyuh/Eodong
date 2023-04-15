@@ -4,10 +4,12 @@ import com.example.eodong.domain.Member;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Repository
+@Transactional
 public class JPAMemberRepository implements MemberRepository {
 
     private final EntityManager em;
