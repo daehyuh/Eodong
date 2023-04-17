@@ -5,17 +5,9 @@ public class MemberForm {
     public String MEMBER_PW;
     public String MEMBER_NAME;
     public int MEMBER_UNI_ID;
-    public int MEMBER_PHONE;
+    public String MEMBER_PHONE;
     public String MEMBER_EMAIL;
     public String MEMBER_MAJOR;
-
-    public String getMEMBER_MAJOR() {
-        return MEMBER_MAJOR;
-    }
-
-    public void setMEMBER_MAJOR(String MEMBER_MAJOR) {
-        this.MEMBER_MAJOR = MEMBER_MAJOR;
-    }
 
     public String getMEMBER_ID() {
         return MEMBER_ID;
@@ -49,11 +41,11 @@ public class MemberForm {
         this.MEMBER_UNI_ID = MEMBER_UNI_ID;
     }
 
-    public int getMEMBER_PHONE() {
+    public String getMEMBER_PHONE() {
         return MEMBER_PHONE;
     }
 
-    public void setMEMBER_PHONE(int MEMBER_PHONE) {
+    public void setMEMBER_PHONE(String MEMBER_PHONE) {
         this.MEMBER_PHONE = MEMBER_PHONE;
     }
 
@@ -65,4 +57,11 @@ public class MemberForm {
         this.MEMBER_EMAIL = MEMBER_EMAIL;
     }
 
+    public String getMEMBER_MAJOR() {
+        return MEMBER_MAJOR;
+    }
+
+    public void setMEMBER_MAJOR(String MEMBER_MAJOR) {
+        this.MEMBER_MAJOR = MEMBER_MAJOR;
+    }
 }

@@ -41,7 +41,7 @@ class EodongApplicationTests {
         member.setMember_pw("3");
         member.setMember_name("3");
         member.setMember_uni_id(3);
-        member.setMember_phone(3);
+        member.setMember_phone("01038222413");
         member.setMember_email("3");
         member.setMember_date(new Date());
         memberService.save(member);

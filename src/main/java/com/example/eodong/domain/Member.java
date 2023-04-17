@@ -15,7 +15,7 @@ public class Member {
     private String member_pw;
     private String member_name;
     private int member_uni_id;
-    private int member_phone;
+    private String member_phone;
     private String member_email;
     @Temporal(TemporalType.TIMESTAMP)
     @Column
@@ -69,11 +69,11 @@ public class Member {
         this.member_uni_id = member_uni_id;
     }
 
-    public int getMember_phone() {
+    public String getMember_phone() {
         return member_phone;
     }
 
-    public void setMember_phone(int member_phone) {
+    public void setMember_phone(String member_phone) {
         this.member_phone = member_phone;
     }
 

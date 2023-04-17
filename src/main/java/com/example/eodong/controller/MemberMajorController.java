@@ -41,12 +41,12 @@ public class MemberMajorController {
     public String apimajorJoin() {
         return "members/major";
     }
-    
+
     @PostMapping(value = "/api/newMajor")
     public String newMajor(@ModelAttribute MemberMajorForm form) {
         MemberMajor memberMajor = new MemberMajor();
-        memberMajor.setMember_major(form.MEMBER_MAJOR);
-        System.out.println(form.MEMBER_MAJOR);
+        memberMajor.setMember_major(form.member_major);
+        System.out.println(form.member_major);
         memberMajorService.save(memberMajor);
         return "home";
     }

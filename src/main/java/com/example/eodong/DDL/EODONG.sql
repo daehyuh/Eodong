@@ -6,7 +6,7 @@ CREATE TABLE MEMBER
     MEMBER_PW     VARCHAR2(20)                                      NOT NULL,
     MEMBER_NAME   VARCHAR2(20)                                      NOT NULL,
     MEMBER_UNI_ID NUMBER(15)                                        NOT NULL,
-    MEMBER_PHONE  NUMBER(15)                                        NOT NULL,
+    MEMBER_PHONE  VARCHAR2(20)                                        NOT NULL,
     MEMBER_EMAIL  VARCHAR2(50)                                      NOT NULL,
     MEMBER_DATE   DATE DEFAULT SYSDATE                              NOT NULL
 );
@@ -19,6 +19,8 @@ SELECT *
 FROM MEMBER;
 
 CREATE SEQUENCE MEMBER_SEQ START WITH 0 MINVALUE 0;
+
+DROP TABLE MEMBER;
 
 DRop SEQUENCE MEMBER_SEQ;
 
