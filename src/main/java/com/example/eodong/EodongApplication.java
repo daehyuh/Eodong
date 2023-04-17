@@ -5,8 +5,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class EodongApplication {
-
     public static void main(String[] args) {
+        System.out.println("hello");
         SpringApplication.run(EodongApplication.class, args);
     }
 

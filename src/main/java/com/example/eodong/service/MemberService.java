@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
@@ -20,7 +19,7 @@ public class MemberService {
     public Long save(Member member){
 //        validateDuplicateMember(member);
         memberRepository.save(member);
-        return member.member_idx;
+        return member.getMember_idx();
     }
     public List<Member> findAll(){
         return memberRepository.findAll();

@@ -4,21 +4,22 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "MEMBER")
 public class Member {
     @Id
     @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "MEMBER_SEQ")
     @SequenceGenerator(name="MEMBER_SEQ", sequenceName = "MEMBER_SEQ", initialValue = 0, allocationSize = 1)
-    public Long member_idx;
-    public String member_major;
-    public String member_id;
-    public String member_pw;
-    public String member_name;
-    public int member_uni_id;
-    public int member_phone;
-    public String member_email;
+    private Long member_idx;
+    private String member_major;
+    private String member_id;
+    private String member_pw;
+    private String member_name;
+    private int member_uni_id;
+    private int member_phone;
+    private String member_email;
     @Temporal(TemporalType.TIMESTAMP)
     @Column
-    public Date member_date;
+    private Date member_date;
 
     public Long getMember_idx() {
         return member_idx;

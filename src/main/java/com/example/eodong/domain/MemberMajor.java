@@ -1,11 +1,13 @@
 package com.example.eodong.domain;
 
 import javax.persistence.*;
-@Table(name = "MEMBER_MAJOR")
+import java.util.Date;
+
 @Entity
+@Table(name = "MEMBERMAJOR")
 public class MemberMajor {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public String member_major;
+    @Id
+    private String member_major;
 
     public String getMember_major() {
         return member_major;

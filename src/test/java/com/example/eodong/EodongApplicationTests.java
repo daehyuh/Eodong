@@ -1,16 +1,14 @@
 package com.example.eodong;
 
 import com.example.eodong.domain.Member;
+import com.example.eodong.domain.MemberMajor;
 import com.example.eodong.service.MemberMajorService;
 import com.example.eodong.service.MemberService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.Collection;
 import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @SpringBootTest
 class EodongApplicationTests {
@@ -30,7 +28,9 @@ class EodongApplicationTests {
 
     @Test
     void contextLoads2() {
-        memberMajorService.findAll();
+        MemberMajor memberMajor = new MemberMajor();
+        memberMajor.setMember_major("ddd");
+        memberMajorService.save(memberMajor);
     }
 
     @Test

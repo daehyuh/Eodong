@@ -5,7 +5,6 @@ import com.example.eodong.domain.MemberMajor;
 import java.util.List;
 
 public interface MemberMajorRepository {
-    MemberMajor save(MemberMajor memberMajor);
+    MemberMajor save(MemberMajor member);
     List<MemberMajor> findAll();
-
 }

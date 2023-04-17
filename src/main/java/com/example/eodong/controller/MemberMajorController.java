@@ -6,39 +6,51 @@ import com.example.eodong.service.MemberMajorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
 public class MemberMajorController {
+
     public final MemberMajorService memberMajorService;
     @Autowired
     public MemberMajorController(MemberMajorService memberMajorService){
         this.memberMajorService = memberMajorService;
     }
 
-    @GetMapping(value = "/api/membermajors")
+    @GetMapping(value = "/api/major")
     @ResponseBody
-    public List<MemberMajor> memberMajorfindAll(){
-        List<MemberMajor> memberMajors = memberMajorService.findAll();
-        return memberMajors;
+    public List<MemberMajor> apimajor() {
+        List<MemberMajor> members = memberMajorService.findAll();
+        return members;
     }
 
-    @GetMapping(value = "/members/major")
-    public String create2Form(Model model) {
+    @GetMapping(value = "/api/majorList")
+    public String apimajorlist(Model model) {
         List<MemberMajor> members = memberMajorService.findAll();
         model.addAttribute("members", members);
         return "members/majorlist";
     }
 
-    @PostMapping("/api/saveMajor")
-    public String memberMajorSave(@ModelAttribute MemberMajorForm memberMajorForm){
+    @GetMapping(value = "/api/majorJoin")
+    public String apimajorJoin() {
+        return "members/major";
+    }
+    
+    @PostMapping(value = "/api/newMajor")
+    public String newMajor(@ModelAttribute MemberMajorForm form) {
         MemberMajor memberMajor = new MemberMajor();
-        memberMajor.setMember_major(memberMajorForm.getMember_major());
+        memberMajor.setMember_major(form.MEMBER_MAJOR);
+        System.out.println(form.MEMBER_MAJOR);
         memberMajorService.save(memberMajor);
         return "home";
     }
+
 
 
 }

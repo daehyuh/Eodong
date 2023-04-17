@@ -18,24 +18,25 @@ public class MemberController {
         this.memberService = memberService;
     }
 
-
     @GetMapping(value = "/")
-    public String createForm() {
+    public String home() {
         return "home";
     }
 
     @GetMapping(value = "/members/join")
-    public String memberjoin() {
+    public String memberjoinForm() {
         return "members/createMemberForm";
     }
 
     @GetMapping(value = "/members/list")
-    public String create2Form(Model model) {
+    public String memberlist(Model model) {
         List<Member> members = memberService.findAll();
         model.addAttribute("members", members);
         return "members/memberlist";
     }
-    @GetMapping(value = "/api/members")
+
+
+    @GetMapping(value = "/api/member")
     @ResponseBody
     public List<Member> ApiMembers() {
         List<Member> members = memberService.findAll();
@@ -57,7 +58,6 @@ public class MemberController {
 
     @PostMapping(value = "/api/join")
     public String Apinew(@ModelAttribute MemberForm form) {
-
         Member member = new Member();
         member.setMember_major(form.MEMBER_MAJOR);
         member.setMember_id(form.MEMBER_ID);
@@ -68,7 +68,6 @@ public class MemberController {
         member.setMember_email(form.MEMBER_EMAIL);
         member.setMember_date(new Date());
         memberService.save(member);
-
         return "home";
     }
 

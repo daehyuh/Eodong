@@ -1,13 +1,13 @@
 package com.example.eodong.controller;
 
 public class MemberMajorForm {
-    public String member_major;
+    public String MEMBER_MAJOR;
 
-    public String getMember_major() {
-        return member_major;
+    public String getMEMBER_MAJOR() {
+        return MEMBER_MAJOR;
     }
 
-    public void setMember_major(String member_major) {
-        this.member_major = member_major;
+    public void setMEMBER_MAJOR(String MEMBER_MAJOR) {
+        this.MEMBER_MAJOR = MEMBER_MAJOR;
     }
 }

@@ -11,7 +11,7 @@
                 </select>
 
                 <script>
-                    fetch('http://localhost/api/membermajors')
+                    fetch('http://localhost/api/major')
                         .then(response => response.json())
                         .then(data => {
                             const select = document.getElementById('MEMBER_MAJOR');
