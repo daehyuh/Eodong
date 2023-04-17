@@ -21,6 +21,9 @@ public class MemberService {
         memberRepository.save(member);
         return member.getMember_idx();
     }
+
+
+
     public List<Member> findAll(){
         return memberRepository.findAll();
     }
