@@ -11,7 +11,6 @@ import java.util.List;
 
 @Controller
 public class MemberController {
-
     public final MemberService memberService;
     @Autowired
     public MemberController(MemberService memberService){
@@ -34,7 +33,6 @@ public class MemberController {
         model.addAttribute("members", members);
         return "members/memberlist";
     }
-
 
     @GetMapping(value = "/api/member")
     @ResponseBody
@@ -59,16 +57,18 @@ public class MemberController {
     @PostMapping(value = "/api/join")
     public String Apinew(@ModelAttribute MemberForm form) {
         Member member = new Member();
-        member.setMember_major(form.MEMBER_MAJOR);
-        member.setMember_id(form.MEMBER_ID);
-        member.setMember_pw(form.MEMBER_PW);
-        member.setMember_name(form.MEMBER_NAME);
-        member.setMember_uni_id(form.MEMBER_UNI_ID);
-        member.setMember_phone(form.MEMBER_PHONE);
-        member.setMember_email(form.MEMBER_EMAIL);
-        member.setMember_date(new Date());
+        member.setMemberMajor(form.MEMBER_MAJOR);
+        member.setMemberId(form.MEMBER_ID);
+        member.setMemberPw(form.MEMBER_PW);
+        member.setMemberName(form.MEMBER_NAME);
+        member.setMemberUniId(form.MEMBER_UNI_ID);
+        member.setMemberPhone(form.MEMBER_PHONE);
+        member.setMemberEmail(form.MEMBER_EMAIL);
+        member.setMemberDate(new Date());
         memberService.save(member);
         return "home";
     }
+
+
 
 }

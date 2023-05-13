@@ -1,28 +1,28 @@
 CREATE TABLE MEMBER
 (
-    MEMBER_IDX    NUMBER(9) PRIMARY KEY,
-    MEMBER_MAJOR  VARCHAR(50) REFERENCES MEMBERMAJOR(MEMBER_MAJOR) NOT NULL,
-    MEMBER_ID     VARCHAR2(20)                                      NOT NULL,
-    MEMBER_PW     VARCHAR2(20)                                      NOT NULL,
-    MEMBER_NAME   VARCHAR2(20)                                      NOT NULL,
-    MEMBER_UNI_ID NUMBER(15)                                        NOT NULL,
-    MEMBER_PHONE  VARCHAR2(20)                                        NOT NULL,
-    MEMBER_EMAIL  VARCHAR2(50)                                      NOT NULL,
-    MEMBER_DATE   DATE DEFAULT SYSDATE                              NOT NULL
+    member_idx    NUMBER(9) PRIMARY KEY,
+    member_major  VARCHAR(50) REFERENCES MEMBERMAJOR(MEMBER_MAJOR) NOT NULL,
+    member_id     VARCHAR2(20)                                     NOT NULL UNIQUE,
+    member_pw     VARCHAR2(200)                                     NOT NULL,
+    member_name   VARCHAR2(20)                                     NOT NULL,
+    member_uni_id NUMBER(15)                                       NOT NULL UNIQUE,
+    member_phone  VARCHAR2(20)                                     NOT NULL UNIQUE,
+    member_email  VARCHAR2(50)                                     NOT NULL UNIQUE,
+    member_date   DATE DEFAULT SYSDATE                             NOT NULL
 );
 commit;
 
 INSERT INTO MEMBER
-VALUES (MEMBER_SEQ.nextval, '컴퓨터공학부', '1', '1', '1', 1, 1, '1', SYSDATE);
+VALUES (Member_seq.nextval, '컴퓨터공학부', '1', '1', '1', 1, 1, '1', SYSDATE);
 
 SELECT *
 FROM MEMBER;
 
-CREATE SEQUENCE MEMBER_SEQ START WITH 0 MINVALUE 0;
+CREATE SEQUENCE Member_seq START WITH 0 MINVALUE 0 maxvalue 999999999;
 
 DROP TABLE MEMBER;
 
-DRop SEQUENCE MEMBER_SEQ;
+DROP SEQUENCE MEMBER_SEQ;
 
 CREATE TABLE MemberMajor
 (
@@ -34,8 +34,7 @@ select * from MemberMajor;
 
 commit;
 
-SELECT *
-FROM MemberMajor;
+SELECT * FROM MemberMajor;
 
 
 drop table MemberMajor CASCADE CONSTRAINTS ;

@@ -17,7 +17,8 @@ public class MemberMajorService {
     @Autowired
     public MemberMajorService(MemberMajorRepository memberMajorRepository){
         this.memberMajorRepository = memberMajorRepository;
-    }  
+    }
+
     public String save(MemberMajor memberMajor){
         memberMajorRepository.save(memberMajor);
         return memberMajor.getMember_major();

@@ -4,15 +4,16 @@ import com.example.eodong.domain.Member;
 import com.example.eodong.domain.MemberMajor;
 import com.example.eodong.service.MemberMajorService;
 import com.example.eodong.service.MemberService;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Date;
+import java.util.List;
 
 @SpringBootTest
 class EodongApplicationTests {
-
     public final MemberMajorService memberMajorService;
     public final MemberService memberService;
     @Autowired
@@ -36,14 +37,21 @@ class EodongApplicationTests {
     @Test
     void contextLoads3() {
         Member member = new Member();
-        member.setMember_major("컴퓨터공학부");
-        member.setMember_id("3");
-        member.setMember_pw("3");
-        member.setMember_name("3");
-        member.setMember_uni_id(3);
-        member.setMember_phone("01038222413");
-        member.setMember_email("3");
-        member.setMember_date(new Date());
+        member.setMemberMajor("컴퓨터공학부");
+        member.setMemberId("3");
+        member.setMemberPw("a12131415");
+        member.setMemberName("3");
+        member.setMemberUniId(3);
+        member.setMemberPhone("01038222413");
+        member.setMemberEmail("3");
+        member.setMemberDate(new Date());
         memberService.save(member);
     }
-}
+
+    @Test
+        void matchTest() {
+        List<Member> list= memberService.findByMemberId("3");
+
+        System.out.println(list.get(0).getMemberPw());
+        }
+    }

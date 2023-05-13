@@ -7,89 +7,97 @@ import java.util.Date;
 @Table(name = "MEMBER")
 public class Member {
     @Id
-    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "MEMBER_SEQ")
-    @SequenceGenerator(name="MEMBER_SEQ", sequenceName = "MEMBER_SEQ", initialValue = 0, allocationSize = 1)
-    private Long member_idx;
-    private String member_major;
-    private String member_id;
-    private String member_pw;
-    private String member_name;
-    private int member_uni_id;
-    private String member_phone;
-    private String member_email;
+    @Column(name = "member_idx")
+    @GeneratedValue(strategy= GenerationType.SEQUENCE, generator = "Member_seq")
+    @SequenceGenerator(name="Member_seq", sequenceName = "Member_seq", initialValue = 0, allocationSize = 1)
+    private Long memberIdx;
+    @Column(name = "member_major")
+    private String memberMajor;
+    @Column(name = "member_id")
+    private String memberId;
+    @Column(name = "member_pw")
+    private String memberPw;
+    @Column(name = "member_name")
+    private String memberName;
+    @Column(name = "member_uni_id")
+    private int memberUniId;
+    @Column(name = "member_phone")
+    private String memberPhone;
+    @Column(name = "member_email")
+    private String memberEmail;
     @Temporal(TemporalType.TIMESTAMP)
-    @Column
-    private Date member_date;
+    @Column(name = "member_date")
+    private Date memberDate;
 
-    public Long getMember_idx() {
-        return member_idx;
+    public Long getMemberIdx() {
+        return memberIdx;
     }
 
-    public void setMember_idx(Long member_idx) {
-        this.member_idx = member_idx;
+    public void setMemberIdx(Long memberIdx) {
+        this.memberIdx = memberIdx;
     }
 
-    public String getMember_major() {
-        return member_major;
+    public String getMemberMajor() {
+        return memberMajor;
     }
 
-    public void setMember_major(String member_major) {
-        this.member_major = member_major;
+    public void setMemberMajor(String memberMajor) {
+        this.memberMajor = memberMajor;
     }
 
-    public String getMember_id() {
-        return member_id;
+    public String getMemberId() {
+        return memberId;
     }
 
-    public void setMember_id(String member_id) {
-        this.member_id = member_id;
+    public void setMemberId(String memberId) {
+        this.memberId = memberId;
     }
 
-    public String getMember_pw() {
-        return member_pw;
+    public String getMemberPw() {
+        return memberPw;
     }
 
-    public void setMember_pw(String member_pw) {
-        this.member_pw = member_pw;
+    public void setMemberPw(String memberPw) {
+        this.memberPw = memberPw;
     }
 
-    public String getMember_name() {
-        return member_name;
+    public String getMemberName() {
+        return memberName;
     }
 
-    public void setMember_name(String member_name) {
-        this.member_name = member_name;
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
     }
 
-    public int getMember_uni_id() {
-        return member_uni_id;
+    public int getMemberUniId() {
+        return memberUniId;
     }
 
-    public void setMember_uni_id(int member_uni_id) {
-        this.member_uni_id = member_uni_id;
+    public void setMemberUniId(int memberUniId) {
+        this.memberUniId = memberUniId;
     }
 
-    public String getMember_phone() {
-        return member_phone;
+    public String getMemberPhone() {
+        return memberPhone;
     }
 
-    public void setMember_phone(String member_phone) {
-        this.member_phone = member_phone;
+    public void setMemberPhone(String memberPhone) {
+        this.memberPhone = memberPhone;
     }
 
-    public String getMember_email() {
-        return member_email;
+    public String getMemberEmail() {
+        return memberEmail;
     }
 
-    public void setMember_email(String member_email) {
-        this.member_email = member_email;
+    public void setMemberEmail(String memberEmail) {
+        this.memberEmail = memberEmail;
     }
 
-    public Date getMember_date() {
-        return member_date;
+    public Date getMemberDate() {
+        return memberDate;
     }
 
-    public void setMember_date(Date member_date) {
-        this.member_date = member_date;
+    public void setMemberDate(Date memberDate) {
+        this.memberDate = memberDate;
     }
 }

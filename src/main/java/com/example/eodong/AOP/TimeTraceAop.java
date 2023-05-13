@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class TimeTraceAop {
-//    @Around("execution(* com.example.demo..*(..))")
-    @Around("execution(* com.example.eodong.service..*(..))")
+    @Around("execution(* com.example.eodong..*(..))")
+//    @Around("execution(* com.example.eodong.service..*(..))")
     public Object execute(ProceedingJoinPoint joinPoint) throws  Throwable {
         long start = System.currentTimeMillis();
         System.out.println("Start " + joinPoint.toLongString());
