@@ -26,7 +26,7 @@ public class MemberController {
     /**
      @모두 찾아서 json으로 찾기
      */
-    @GetMapping(value = "/members/list")
+    @GetMapping(value = "/api/list")
     public String findAll(Model model) {
         List<Member> members = memberService.findAll();
         model.addAttribute("members", members);
