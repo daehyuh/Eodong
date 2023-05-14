@@ -1,4 +1,4 @@
-package com.example.eodong.controller.emailAuth;
+package com.example.eodong;
 
 import java.util.Properties;
 

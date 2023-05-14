@@ -1,6 +1,5 @@
 package com.example.eodong.controller;
 
-import com.example.eodong.controller.emailAuth.EmailService;
 import com.example.eodong.domain.Member;
 import com.example.eodong.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class MemberController {
@@ -23,7 +21,6 @@ public class MemberController {
     }
 
     /**
-     @모두 찾아서 json으로 찾기
      */
     @GetMapping(value = "/api/list")
     public String findAll(Model model) {
@@ -32,7 +29,6 @@ public class MemberController {
         return "members/memberlist";
     }
     /**
-     @모두 찾아서 json으로 찾기
      */
     @GetMapping(value = "/api/member")
     @ResponseBody
@@ -83,7 +79,7 @@ public class MemberController {
     @ResponseBody
     public String login(@ModelAttribute LoginForm form, HttpSession session){
         String res = memberService.login(form.MEMBER_ID, form.MEMBER_PW, session);
-        return res;
+        return "home";
     }
 
     @GetMapping(value = "/api/findId")
@@ -94,13 +90,18 @@ public class MemberController {
 
     @PostMapping(value = "/api/findId")
     @ResponseBody
-    public String findByMemberNameAndMemberEmail(@ModelAttribute MemberForm form){
+    public ResponseEntity findByMemberNameAndMemberEmail(@ModelAttribute MemberForm form){
+        ResponseEntity responseEntity = new ResponseEntity();
         System.out.println(form.toString());
         String res ="";
         if (!memberService.findByMemberNameAndMemberEmail(form.MEMBER_NAME, form.MEMBER_EMAIL).isEmpty()){
-            return memberService.findByMemberNameAndMemberEmail(form.MEMBER_NAME, form.MEMBER_EMAIL).get().getMemberPw();
+            responseEntity.code = 200;
+            responseEntity.message = memberService.findByMemberNameAndMemberEmail(form.MEMBER_NAME, form.MEMBER_EMAIL).get().getMemberId();
+        return responseEntity;
         } else {
-            return "아이디가 없음";
+            responseEntity.code = 500;
+            responseEntity.message = "아이디가 없음";
+            return responseEntity;
         }
     }
 
@@ -130,9 +131,39 @@ public class MemberController {
 
     @GetMapping(value = "/api/chekcEmail")
     @ResponseBody
-    public Boolean chekcEmail(@ModelAttribute MemberForm form) {
+    public ResponseEntity chekcEmail(@ModelAttribute MemberForm form) {
         // 없는것이기에 Not 붙여줌
-        return !memberService.existsByMemberEmail(form.MEMBER_EMAIL);
+        ResponseEntity responseEntity = new ResponseEntity();
+        if (!memberService.existsByMemberEmail(form.MEMBER_EMAIL)) {
+            responseEntity.code=200;
+            responseEntity.message="중복 이메일 없음";
+            return responseEntity;
+        } else {
+            responseEntity.code=500;
+            responseEntity.message="중복 이메일 있음";
+            return responseEntity;
+        }
+    }
+
+    static class ResponseEntity {
+        private int code;
+        private String message;
+
+        public int getCode() {
+            return code;
+        }
+
+        public void setCode(int code) {
+            this.code = code;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
     }
 
 }
