@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 public interface MemberRepository {
 
@@ -13,7 +14,7 @@ public interface MemberRepository {
     List<Member> findAll();     // 전체조회
     List<Member> findByMemberId(String id); // ID로 검색
     List<Member> findByMemberEmail(String email); // Email로 검색
-    List<Member> findByMemberNameAndMemberEmail(String name, String email); //이름과 이메일로 검색
+    Optional<Member> findByMemberNameAndMemberEmail(String name, String email); //이름과 이메일로 검색
     boolean existsByMemberId(String id);
     boolean existsByMemberEmail(String email);
 

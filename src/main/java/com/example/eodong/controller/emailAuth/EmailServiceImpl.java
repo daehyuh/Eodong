@@ -21,7 +21,7 @@ public class EmailServiceImpl implements EmailService{
     @Autowired
     JavaMailSender emailSender;
 
-    public static final String ePw = createKey();
+    public static String ePw = createKey();
 
     public EmailServiceImpl(MemberService memberService, PasswordEncoder passwordEncoder) {
         this.memberService = memberService;

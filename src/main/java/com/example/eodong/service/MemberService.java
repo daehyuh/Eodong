@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class MemberService {
@@ -37,8 +38,8 @@ public class MemberService {
         return memberRepository.findByMemberId(id);
     }
 
-    public String findByMemberNameAndMemberEmail(String name, String email){
-        return memberRepository.findByMemberNameAndMemberEmail(name, email).get(0).getMemberId();
+    public Optional<Member> findByMemberNameAndMemberEmail(String name, String email){
+        return memberRepository.findByMemberNameAndMemberEmail(name, email);
     }
 
     public List<Member> findByMemberEmail(String email){

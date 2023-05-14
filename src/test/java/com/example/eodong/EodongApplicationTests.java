@@ -49,8 +49,8 @@ class EodongApplicationTests {
     }
 
     @Test
-        void matchTest() {
-        List<Member> list = memberService.findByMemberId("rkdeown10");
+        void 누가코드를영어로짜() {
+        List<Member> list = memberService.findByMemberId("누군데");
 
         System.out.println(list.get(0).getMemberPw());
         }

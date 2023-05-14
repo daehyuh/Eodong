@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MemberController {
@@ -91,12 +92,18 @@ public class MemberController {
     public String findId(){
         return "members/findId";
     }
+
+
     @PostMapping(value = "/api/findId")
     @ResponseBody
     public String findByMemberNameAndMemberEmail(@ModelAttribute MemberForm form){
         System.out.println(form.toString());
-        String res = memberService.findByMemberNameAndMemberEmail(form.MEMBER_NAME, form.MEMBER_EMAIL);
-        return res;
+        String res ="";
+        if (!memberService.findByMemberNameAndMemberEmail(form.MEMBER_NAME, form.MEMBER_EMAIL).isEmpty()){
+            return memberService.findByMemberNameAndMemberEmail(form.MEMBER_NAME, form.MEMBER_EMAIL).get().getMemberPw();
+        } else {
+            return "아이디가 없음";
+        }
     }
 
     @GetMapping(value = "/api/findPw")
@@ -118,6 +125,7 @@ public class MemberController {
     public String updatePw() {
         return "members/updatePw";
     }
+
     @PostMapping(value = "/api/updatePw")
     @ResponseBody
     public String updatePw(@ModelAttribute updateLoginForm form) {
@@ -133,7 +141,7 @@ public class MemberController {
 
     @GetMapping(value = "/api/chekcEmail")
     @ResponseBody
-    public Boolean chekcEmail(@ModelAttribute MemberForm form){
+    public Boolean chekcEmail(@ModelAttribute MemberForm form) {
         // 없는것이기에 Not 붙여줌
         return !memberService.existsByMemberEmail(form.MEMBER_EMAIL);
     }
