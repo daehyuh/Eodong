@@ -50,7 +50,7 @@ class EodongApplicationTests {
 
     @Test
         void matchTest() {
-        List<Member> list= memberService.findByMemberId("3");
+        List<Member> list = memberService.findByMemberId("rkdeown10");
 
         System.out.println(list.get(0).getMemberPw());
         }

@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <h1>아이디 찾기</h1>
+    <form action="/api/updatePw" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <div>
+                <label for="MEMBER_ID">MEMBER_ID</label>
+                <input type="text" id="MEMBER_ID" name="MEMBER_ID" placeholder="아이디를 입력하세요">
+                <label for="MEMBER_PW">MEMBER_PW</label>
+                <input type="text" id="MEMBER_PW" name="MEMBER_PW" placeholder="현재 비밀번호를 입력하세요">
+                    <label for="MEMBER_NewPW">MEMBER_EMAIL</label>
+                    <input type="text" id="MEMBER_NewPW" name="MEMBER_NewPW" placeholder="새 비밀번호를 입력하세요">
+            <button type="submit">등록</button>
+    </form>
+</div> <!-- /container -->
+
+
+</body>
+</html>

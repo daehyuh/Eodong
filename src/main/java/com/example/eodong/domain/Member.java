@@ -1,6 +1,7 @@
 package com.example.eodong.domain;
 
 import javax.persistence.*;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 @Entity
@@ -20,7 +21,7 @@ public class Member {
     @Column(name = "member_name")
     private String memberName;
     @Column(name = "member_uni_id")
-    private int memberUniId;
+    private String memberUniId;
     @Column(name = "member_phone")
     private String memberPhone;
     @Column(name = "member_email")
@@ -69,11 +70,11 @@ public class Member {
         this.memberName = memberName;
     }
 
-    public int getMemberUniId() {
+    public String getMemberUniId() {
         return memberUniId;
     }
 
-    public void setMemberUniId(int memberUniId) {
+    public void setMemberUniId(String memberUniId) {
         this.memberUniId = memberUniId;
     }
 
@@ -100,4 +101,7 @@ public class Member {
     public void setMemberDate(Date memberDate) {
         this.memberDate = memberDate;
     }
+
+
 }
+

@@ -3,9 +3,9 @@ CREATE TABLE MEMBER
     member_idx    NUMBER(9) PRIMARY KEY,
     member_major  VARCHAR(50) REFERENCES MEMBERMAJOR(MEMBER_MAJOR) NOT NULL,
     member_id     VARCHAR2(20)                                     NOT NULL UNIQUE,
-    member_pw     VARCHAR2(200)                                     NOT NULL,
+    member_pw     VARCHAR2(200)                                    NOT NULL,
     member_name   VARCHAR2(20)                                     NOT NULL,
-    member_uni_id NUMBER(15)                                       NOT NULL UNIQUE,
+    member_uni_id VARCHAR2(15)                                     NOT NULL UNIQUE,
     member_phone  VARCHAR2(20)                                     NOT NULL UNIQUE,
     member_email  VARCHAR2(50)                                     NOT NULL UNIQUE,
     member_date   DATE DEFAULT SYSDATE                             NOT NULL

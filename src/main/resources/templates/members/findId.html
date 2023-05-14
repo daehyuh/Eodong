@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <h1>아이디 찾기</h1>
+    <form action="/api/findId" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <div>
+                <label for="MEMBER_NAME">MEMBER_NAME</label>
+                <input type="text" id="MEMBER_NAME" name="MEMBER_NAME" placeholder="이름을 입력하세요">
+                <div>
+                    <label for="MEMBER_EMAIL">MEMBER_EMAIL</label>
+                    <input type="text" id="MEMBER_EMAIL" name="MEMBER_EMAIL" placeholder="이메일를 입력하세요">
+                </div>
+
+            <button type="submit">등록</button>
+    </form>
+</div> <!-- /container -->
+
+
+</body>
+</html>

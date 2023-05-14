@@ -1,13 +1,38 @@
 package com.example.eodong.controller;
 
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 public class MemberForm {
+    @NotBlank
     public String MEMBER_ID;
+    @NotBlank
     public String MEMBER_PW;
+    @NotBlank
     public String MEMBER_NAME;
-    public int MEMBER_UNI_ID;
+    @NotBlank
+    public String MEMBER_UNI_ID;
+    @NotBlank
     public String MEMBER_PHONE;
+    @NotBlank(message = "이메일은 필수 입력 값입니다.")
+    @Email(message = "이메일 형식에 맞지 않습니다.")
     public String MEMBER_EMAIL;
+    @NotBlank
+    public String MEMBER_NewPW;
+
+
     public String MEMBER_MAJOR;
+
+    public String getMEMBER_NewPW() {
+        return MEMBER_NewPW;
+    }
+
+    public void setMEMBER_NewPW(String MEMBER_NewPW) {
+        this.MEMBER_NewPW = MEMBER_NewPW;
+    }
 
     public String getMEMBER_ID() {
         return MEMBER_ID;
@@ -33,11 +58,11 @@ public class MemberForm {
         this.MEMBER_NAME = MEMBER_NAME;
     }
 
-    public int getMEMBER_UNI_ID() {
+    public String getMEMBER_UNI_ID() {
         return MEMBER_UNI_ID;
     }
 
-    public void setMEMBER_UNI_ID(int MEMBER_UNI_ID) {
+    public void setMEMBER_UNI_ID(String MEMBER_UNI_ID) {
         this.MEMBER_UNI_ID = MEMBER_UNI_ID;
     }
 
@@ -63,5 +88,18 @@ public class MemberForm {
 
     public void setMEMBER_MAJOR(String MEMBER_MAJOR) {
         this.MEMBER_MAJOR = MEMBER_MAJOR;
+    }
+
+    @Override
+    public String toString() {
+        return "MemberForm{" +
+                "MEMBER_ID='" + MEMBER_ID + '\'' +
+                ", MEMBER_PW='" + MEMBER_PW + '\'' +
+                ", MEMBER_NAME='" + MEMBER_NAME + '\'' +
+                ", MEMBER_UNI_ID=" + MEMBER_UNI_ID +
+                ", MEMBER_PHONE='" + MEMBER_PHONE + '\'' +
+                ", MEMBER_EMAIL='" + MEMBER_EMAIL + '\'' +
+                ", MEMBER_MAJOR='" + MEMBER_MAJOR + '\'' +
+                '}';
     }
 }

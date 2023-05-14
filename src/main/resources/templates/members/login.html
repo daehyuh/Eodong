@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<div class="container">
+    <h1>로그인</h1>
+    <form action="/api/login" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <div>
+
+                <label for="MEMBER_ID">MEMBER_ID</label>
+                <input type="text" id="MEMBER_ID" name="MEMBER_ID" placeholder="아이디를 입력하세요">
+                <div>
+                    <label for="MEMBER_PW">MEMBER_PW</label>
+                    <input type="text" id="MEMBER_PW" name="MEMBER_PW" placeholder="비밀번호를 입력하세요">
+                </div>
+
+            <button type="submit">등록</button>
+    </form>
+</div> <!-- /container -->
+
+<a href="/api/findId">아이디 찾기</a>
+<a href="/api/findPw">비밀번호 찾기</a>
+
+</body>
+</html>
