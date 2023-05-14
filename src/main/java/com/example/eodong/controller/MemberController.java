@@ -17,11 +17,9 @@ import java.util.Optional;
 @Controller
 public class MemberController {
     public final MemberService memberService;
-    public final EmailService emailService;
     @Autowired
-    public MemberController(MemberService memberService, EmailService emailService){
+    public MemberController(MemberService memberService){
         this.memberService = memberService;
-        this.emailService = emailService;
     }
 
     /**
@@ -111,15 +109,6 @@ public class MemberController {
         return "members/findPw";
     }
 
-    @PostMapping(value = "/api/findPw")
-    @ResponseBody
-    public String findPw(@ModelAttribute MemberForm form) throws Exception {
-        System.out.println(form.toString());
-        String confirm = emailService.sendSimpleMessage(form.MEMBER_EMAIL);
-
-        String message = "<script>alert('이메일로 임시비밀번호를 보냈습니다');location.href='/';</script>";
-        return message;
-    }
 
     @GetMapping(value = "/api/updatePw")
     public String updatePw() {
