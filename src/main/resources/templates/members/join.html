@@ -11,7 +11,7 @@
                 </select>
 
                 <script>
-                    fetch('https://eodong.kro.kr/api/major')
+                    fetch('http://eodong.kro.kr/api/major')
                         .then(response => response.json())
                         .then(data => {
                             const select = document.getElementById('MEMBER_MAJOR');
