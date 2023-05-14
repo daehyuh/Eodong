@@ -1,8 +1,9 @@
 package com.example.eodong.controller;
 
-public class LoginForm {
+public class updateLoginForm {
     public String MEMBER_ID;
     public String MEMBER_PW;
+    public String MEMBER_NewPW;
 
     public String getMEMBER_ID() {
         return MEMBER_ID;
@@ -20,4 +21,11 @@ public class LoginForm {
         this.MEMBER_PW = MEMBER_PW;
     }
 
+    public String getMEMBER_NewPW() {
+        return MEMBER_NewPW;
+    }
+
+    public void setMEMBER_NewPW(String MEMBER_NewPW) {
+        this.MEMBER_NewPW = MEMBER_NewPW;
+    }
 }

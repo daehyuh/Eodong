@@ -3,6 +3,7 @@ package com.example.eodong.service;
 import com.example.eodong.domain.Member;
 import com.example.eodong.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -11,14 +12,19 @@ import java.util.List;
 @Service
 public class MemberService {
     private final MemberRepository memberRepository;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
-    public MemberService(MemberRepository memberRepository){
+    public MemberService(MemberRepository memberRepository, PasswordEncoder passwordEncoder){
         this.memberRepository = memberRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Long save(Member member){
 //        validateDuplicateMember(member);
+
+        member.setMemberPw(passwordEncoder.encode(member.getMemberPw()));
+
         memberRepository.save(member);
         return member.getMemberIdx();
     }
@@ -36,7 +42,7 @@ public class MemberService {
     }
 
     public List<Member> findByMemberEmail(String email){
-        return findByMemberEmail(email);
+        return memberRepository.findByMemberEmail(email);
     }
 
 
@@ -48,18 +54,17 @@ public class MemberService {
         } else{
             List<Member> member = memberRepository.findByMemberId(id);
             Member member1 = member.get(0);
-            if (member1.getMemberPw().equals(pw)){
+            String encodedPassword = member1.getMemberPw();
+            if (passwordEncoder.matches(pw, encodedPassword)){
                 session.setAttribute("userid", member1.getMemberId());
                 session.setAttribute("name", member1.getMemberName());
                 message = "<script>alert('로그인 되었습니다.');location.href='/';</script>";
                 return message;
             } else {
-                session.setAttribute("errormsg", "로그인 실패");
                 message = "<script>alert('로그인 실패했습니다.');history.back();</script>";
                 return message;
             }
         }
-
     }
 
 
@@ -75,7 +80,9 @@ public class MemberService {
         } else{
             List<Member> member = memberRepository.findByMemberId(id);
             Member member1 = member.get(0);
-            if (member1.getMemberPw().equals(pw)){
+            String encodedPassword = member1.getMemberPw();
+            if (passwordEncoder.matches(pw, encodedPassword)){
+                newPw = passwordEncoder.encode(newPw);
                 memberRepository.updatePwManual(id, pw, newPw);
                 message = "<script>alert('비밀번호가 변경 완료.');location.href='/';</script>";
                 return message;

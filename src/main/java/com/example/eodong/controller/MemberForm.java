@@ -19,18 +19,7 @@ public class MemberForm {
     @Email(message = "이메일 형식에 맞지 않습니다.")
     public String MEMBER_EMAIL;
     @NotBlank
-    public String MEMBER_NewPW;
-
-
     public String MEMBER_MAJOR;
-
-    public String getMEMBER_NewPW() {
-        return MEMBER_NewPW;
-    }
-
-    public void setMEMBER_NewPW(String MEMBER_NewPW) {
-        this.MEMBER_NewPW = MEMBER_NewPW;
-    }
 
     public String getMEMBER_ID() {
         return MEMBER_ID;

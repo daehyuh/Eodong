@@ -10,19 +10,22 @@ import com.example.eodong.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EmailServiceImpl implements EmailService{
     public final MemberService memberService;
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     JavaMailSender emailSender;
 
     public static final String ePw = createKey();
 
-    public EmailServiceImpl(MemberService memberService) {
+    public EmailServiceImpl(MemberService memberService, PasswordEncoder passwordEncoder) {
         this.memberService = memberService;
+        this.passwordEncoder = passwordEncoder;
     }
 
     private MimeMessage createMessage(String to)throws Exception{
@@ -30,7 +33,8 @@ public class EmailServiceImpl implements EmailService{
         System.out.println("password : "+ ePw);
         MimeMessage  message = emailSender.createMimeMessage();
 
-        memberService.updatePw(ePw, to);
+
+        memberService.updatePw(passwordEncoder.encode(ePw), to);
 
         message.addRecipients(RecipientType.TO, to);//보내는 대상
         message.setSubject("임시 비밀번호 안내");//제목

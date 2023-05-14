@@ -21,8 +21,9 @@ dependencies {
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'}
 
+
     //security
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '2.4.5'
 
     // jwt
     implementation 'io.jsonwebtoken:jjwt-api:0.11.5'

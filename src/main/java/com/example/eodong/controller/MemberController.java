@@ -109,6 +109,7 @@ public class MemberController {
     public String findPw(@ModelAttribute MemberForm form) throws Exception {
         System.out.println(form.toString());
         String confirm = emailService.sendSimpleMessage(form.MEMBER_EMAIL);
+
         String message = "<script>alert('이메일로 임시비밀번호를 보냈습니다');location.href='/';</script>";
         return message;
     }
@@ -119,8 +120,7 @@ public class MemberController {
     }
     @PostMapping(value = "/api/updatePw")
     @ResponseBody
-    public String updatePw(@ModelAttribute MemberForm form) {
-        System.out.println(form.toString());
+    public String updatePw(@ModelAttribute updateLoginForm form) {
         String message = memberService.updatePwManual(form.MEMBER_ID, form.MEMBER_PW, form.MEMBER_NewPW);
         return message;
     }
