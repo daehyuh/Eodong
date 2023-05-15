@@ -27,7 +27,7 @@ public class EmailController {
         return members;
     }
 
-    @PostMapping(value = "/api/api/findPw")
+    @PostMapping(value = "/api/findPw")
     public String findPw(@ModelAttribute EmailForm form) throws Exception {
         System.out.println(form.emailMail);
         emailService.findPwControl(form.emailMail);
