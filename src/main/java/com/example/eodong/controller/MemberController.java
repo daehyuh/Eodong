@@ -76,9 +76,8 @@ public class MemberController {
         return "members/login";
     }
     @PostMapping(value = "/api/login")
-    @ResponseBody
     public String login(@ModelAttribute LoginForm form, HttpSession session){
-        String res = memberService.login(form.MEMBER_ID, form.MEMBER_PW, session);
+        memberService.login(form.MEMBER_ID, form.MEMBER_PW, session);
         return "home";
     }
 

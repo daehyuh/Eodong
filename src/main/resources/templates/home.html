@@ -4,7 +4,7 @@
 <div class="container">
     <div>
         <h1>Hello Spring</h1>
-        <a th:if="${session.userid != null}" href="api/updatePw">비밀번호 변경</a>
+        <a th:if="${session.userid != null}" href="/api/updatePw">비밀번호 변경</a>
         <a th:if="${session.userid != null}" href="/api/logout">로그아웃</a>
         <span  th:text="${session.userid}"> Member_ID </span>
         <span  th:text="${session.name}"> Member_Name </span>
